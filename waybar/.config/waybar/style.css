@@ -1,0 +1,146 @@
+@define-color magenta #bd5eff;
+@define-color red #ff6e5e;
+@define-color lavender #d08fff;
+@define-color brightRed #ff9a8f;
+
+@define-color base alpha(#000000, 0.1);
+@define-color surface alpha(#000000, 0.6);
+@define-color text #ffe8e5;
+@define-color activeBg @magenta;
+@define-color activeFg #000000;
+@define-color shadow alpha(@lavender, 0.25);
+
+* {
+  all: unset;
+  font-size: 1rem;
+  font-weight: 900;
+  font-family:
+    InconsolataNerdFont,
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+  background-clip: border-box;
+  color: @text;
+}
+
+button {
+  min-width: 24px;
+  border-radius: 999px;
+  color: @text;
+  transition:
+    all 50ms cubic-bezier(0.55, 0, 0.28, 1.682),
+    box-shadow 50ms ease-in-out,
+    background-color 200ms ease-in-out;
+}
+
+button.visible.hosting-monitor:not(.active) {
+  border: 0.3px solid @activeBg;
+}
+
+button.active.hosting-monitor,
+button:hover {
+  background: @activeBg;
+}
+
+button.active.hosting-monitor label,
+button:hover label {
+  color: @activeFg;
+  text-shadow: none;
+}
+
+button.hosting-monitor {
+  box-shadow: 0px 0px 6px 3px @shadow inset;
+}
+
+tooltip {
+  opacity: 1;
+  background-color: alpha(#000000, 0.8);
+  text-shadow: none;
+  border-radius: 8px;
+}
+
+window#waybar.empty #window {
+  background-color: transparent;
+}
+
+#window {
+  margin-right: 8px;
+  text-shadow: 0px 0px 4px @red, 0px 0px 8px @brightRed;
+}
+
+#workspaces button {
+  padding: 0 4px;
+}
+
+#workspaces,
+#custom-appmenu,
+#network,
+#clock,
+#bluetooth,
+#wireplumber {
+  background-color: @surface;
+  border-radius: 999px;
+  box-shadow: 0px 0px 6px 3px @shadow inset;
+  text-shadow: 0px 0px 2px @red;
+}
+
+#network,
+#wireplumber,
+#bluetooth,
+#clock {
+  padding: 0 8px;
+}
+
+#cpu,
+#memory,
+#battery,
+#disk {
+  padding-right: 0.5rem;
+}
+
+#hardware {
+  text-shadow: 0px 0px 4px @red, 0px 0px 8px @brightRed;
+}
+
+#custom-appmenu {
+  font-size: 1.2rem;
+  min-width: 32px;
+  min-height: 32px;
+  padding-right: 4px;
+  border-radius: 999px;
+}
+
+#workspaces button {
+  margin-right: 2px;
+}
+
+#workspaces button:last-child {
+  margin-right: 0;
+}
+
+#taskbar {
+  font-weight: normal;
+  font-style: normal;
+}
+
+@keyframes blink {
+  to {
+    color: @text;
+  }
+}
+
+#cpu.critical,
+#battery.critical:not(.charging),
+#temperature.critical {
+  color: @red;
+  animation-name: blink;
+  animation-duration: 2.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+label:focus {
+  background-color: @activeBg;
+}

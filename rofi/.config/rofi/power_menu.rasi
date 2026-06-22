@@ -1,0 +1,12 @@
+window {
+    location: northwest;
+    anchor: northwest;
+    x-offset: 10px;
+    y-offset: 10px;
+}
+inputbar {
+    enabled: false;
+}
+element-icon {
+    size: 2.5em;
+}

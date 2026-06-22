@@ -1,0 +1,28 @@
+# Secrets & credentials
+*.key
+*.pem
+*.secret
+*secret*
+*password*
+*credentials*
+.env
+.env.*
+
+# Caches & données temporaires
+__pycache__/
+*.pyc
+*.pyo
+.cache/
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+
+# Spécifique à la machine (ne pas versionner)
+monitors.xml
+.mozilla/
+
+# Fichiers système
+.DS_Store
+Thumbs.db

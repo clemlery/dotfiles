@@ -1,0 +1,83 @@
+{
+  "custom/appmenu": {
+    "format": "",
+    "tooltip-format": "Open the power menu",
+    "on-click": "$HOME/.config/waybar/scripts/power_menu.py"
+  },
+  "hyprland/window": {
+    "rewrite": {
+      "(.*) — Mozilla Firefox": "$1",
+      "(.*) — Glide Browser": "$1",
+      "(.*) - Google Chrome": "$1",
+      "(.*) - Cursor": "$1"
+    },
+    "separate-outputs": true
+  },
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "all-outputs": true,
+    "format": "{name}",
+    // TODO: https://github.com/Alexays/Waybar/issues/3912
+    // "persistent-workspaces": {
+    //   "*": 3
+    // },
+    "move-to-monitor": true,
+    "window-rewrite": {
+      "class<firefox>": "󰈹 ",
+      "class<google-chrome>": " ",
+      "class<kitty>": " ",
+      "class<org.kde.dolphin>": " ",
+      "class<Thunar>": " ",
+      "class<Cursor>": "󰆧 ",
+      "class<Spotify>": " ",
+      "class<vlc>": "󰕼 ",
+      "class<virt-viewer>": "󰍹 ",
+      "class<1Password>": "󰯅 ",
+      "class<qdbusviewer>": " ",
+      "class<mpv>": " ",
+      "class<qvidcap>": " ",
+      "class<Audacity>": " "
+    }
+  },
+  "network": {
+    "format": "{ifname}",
+    "format-wifi": "  {signalStrength}%",
+    "format-ethernet": " ",
+    "format-disconnected": "󰖪 ",
+    "tooltip-format": "  {ifname} via {gwaddri}",
+    "tooltip-format-wifi": "   {essid} ({signalStrength}%)  {bandwidthDownBytes}  {bandwidthUpBytes}",
+    "tooltip-format-ethernet": "  {ifname} ({ipaddr}/{cidr})  {bandwidthDownBytes}  {bandwidthUpBytes}",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50,
+    "interval": 1,
+    "on-click": "ghostty -e nmtui"
+  },
+  "bluetooth": {
+    "format-disabled": "",
+    "format-off": "",
+    "interval": 30,
+    "on-click": "ghostty -e bluetoothctl",
+    "format-no-controller": ""
+  },
+  "wireplumber": {
+    "format": "{icon} {volume}%",
+    "format-muted": " ",
+    "on-click": "ghostty -e alsamixer",
+    "format-icons": [
+      "",
+      " ",
+      " "
+    ]
+  },
+  "clock": {
+    "format-alt": "󰥔 {0:%H:%M:%S}",
+    "interval": 1,
+    "format": "󰥔 {0:%H:%M}  {0:%m/%d}",
+    "tooltip-format": "{calendar}",
+    "calendar": {
+      "format": {
+        "today": "<span color='#ff6e5e'><b><u>{}</u></b></span>"
+      }
+    }
+  }
+}
