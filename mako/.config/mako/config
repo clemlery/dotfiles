@@ -1,0 +1,46 @@
+# Thème « Crépuscule rose » — mako
+
+# Apparence générale
+background-color=#1e1233ee
+text-color=#ece4f2
+border-color=#4b3a8c
+border-size=2
+border-radius=10
+
+# Typographie
+font=MonaspiceNe Nerd Font 11
+
+# Disposition
+width=320
+height=120
+margin=8
+padding=12
+anchor=top-right
+
+# Comportement
+default-timeout=5000
+ignore-timeout=0
+max-visible=5
+
+# Icône
+icon-path=/usr/share/icons/hicolor
+icon-location=left
+
+# Urgence low — atténuée
+[urgency=low]
+background-color=#150d24cc
+text-color=#c9add1
+border-color=#323169
+
+# Urgence normal — couleur principale
+[urgency=normal]
+background-color=#1e1233ee
+text-color=#ece4f2
+border-color=#4b3a8c
+
+# Urgence high — accent rose/magenta
+[urgency=high]
+background-color=#2d2872ee
+text-color=#ece4f2
+border-color=#e3779e
+default-timeout=0
