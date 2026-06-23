@@ -1,12 +1,19 @@
+/* Power menu — overrides du thème Crépuscule rose */
+
+@import "theme.rasi"
+
 window {
-    location: northwest;
-    anchor: northwest;
-    x-offset: 10px;
-    y-offset: 10px;
+    location:  northwest;
+    anchor:    northwest;
+    x-offset:  10px;
+    y-offset:  10px;
+    width:     220px;
 }
-inputbar {
-    enabled: false;
+
+mainbox {
+    children: [ listview ];
 }
+
 element-icon {
-    size: 2.5em;
+    size: 1.4em;
 }

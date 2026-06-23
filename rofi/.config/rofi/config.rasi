@@ -1,8 +1,8 @@
 configuration {
-    show-icons: false;
-    font: "Inconsolata Nerd Font 12";
-    show-icons: true;
-    icon-theme: "Papirus";
+    show-icons:          true;
+    font:                "Inconsolata Nerd Font 12";
+    icon-theme:          "Papirus";
     drun-display-format: "{name}";
 }
 
+@theme "theme"

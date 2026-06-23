@@ -1,0 +1,98 @@
+/* Thème « Crépuscule rose » — rofi */
+
+* {
+    bg:      #150d24;
+    bg-alt:  #1e1233;
+    surface: #2d2872;
+    muted:   #4b3a8c;
+    rose:    #e3779e;
+    magenta: #b35298;
+    lilac:   #c9add1;
+    fg:      #ece4f2;
+    peach:   #efaaa2;
+
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+window {
+    background-color: @bg;
+    border:           2px solid;
+    border-color:     @muted;
+    border-radius:    12px;
+    width:            380px;
+    padding:          8px;
+}
+
+mainbox {
+    spacing:  6px;
+    children: [ inputbar, listview ];
+}
+
+inputbar {
+    background-color: @surface;
+    border-radius:    8px;
+    padding:          6px 10px;
+    spacing:          8px;
+    children:         [ prompt, entry ];
+}
+
+prompt {
+    text-color: @rose;
+}
+
+entry {
+    text-color:   @fg;
+    placeholder:  "Rechercher…";
+    placeholder-color: @lilac;
+}
+
+listview {
+    spacing:      4px;
+    scrollbar:    false;
+    fixed-height: false;
+    lines:        8;
+}
+
+element {
+    border-radius:    8px;
+    padding:          6px 10px;
+    spacing:          8px;
+    orientation:      horizontal;
+    children:         [ element-icon, element-text ];
+}
+
+element normal normal {
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+element normal active {
+    background-color: @bg-alt;
+    text-color:       @peach;
+}
+
+element selected normal,
+element selected active {
+    background-color: @rose;
+    text-color:       @bg;
+}
+
+element alternate normal {
+    background-color: @bg-alt;
+    text-color:       @fg;
+}
+
+element-icon {
+    size:             1.2em;
+    vertical-align:   0.5;
+}
+
+element-text {
+    vertical-align:   0.5;
+}
+
+scrollbar {
+    handle-color:     @muted;
+    background-color: @bg-alt;
+}
