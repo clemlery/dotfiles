@@ -6,11 +6,6 @@
     },
     "on-click": "ghostty -e htop"
   },
-  "custom/ram-graph": {
-    "format": " {}%",
-    "tooltip-format": "Physical: {used:0.1f}/{total:0.1f}GiB used\nSwap: {swapUsed:0.1f}/{swapTotal:0.1f}GiB used",
-    "on-click": "ghostty -e htop"
-  },
   "temperature": {
     "hwmon-path-abs": "/sys/devices/platform/coretemp.0/hwmon",
     "input-filename": "temp1_input",
@@ -55,7 +50,7 @@
     "orientation": "horizontal",
     "modules": [
       "cpu",
-      "memory",
+      "custom/ram-graph",
       "temperature",
       "battery"
     ]
