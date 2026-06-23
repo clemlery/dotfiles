@@ -1,0 +1,46 @@
+# Default config for sway
+#
+# Read `man 5 sway` for a complete reference.
+
+### Loading sub-configs
+include ~/.config/sway/conf.d/input/input.conf
+include ~/.config/sway/conf.d/keybinds/keybinds.conf
+include ~/.config/sway/conf.d/app_rules/app_rules.conf
+include ~/.config/sway/conf.d/waybar/bar.conf
+
+### Variables
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+# Your preferred terminal emulator
+set $term ghostty
+# Your preferred application launcher
+set $menu wmenu-run
+
+### Output configuration
+# Default wallpaper
+output * bg /home/clem/Images/Backgrounds/digital-art-isolated-house.jpg fill
+
+# Example configuration:
+#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+#   swaymsg -t get_outputs for output list
+
+### Idle configuration (exemples)
+# exec swayidle -w \
+#     timeout 300 'swaylock -f -c 000000' \
+#     timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+#     before-sleep 'swaylock -f -c 000000'
+
+### Input configuration handled in conf.d/input.conf
+
+### Keybindings handled in conf.d/keybinds.conf
+
+### App rules handled in conf.d/app_rules.conf
+
+### Status bar handled in conf.d/bar.conf
+
+### Include system defaults
