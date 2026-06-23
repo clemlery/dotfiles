@@ -1,0 +1,26 @@
+# Thème « Crépuscule rose »
+
+background         = #150d24
+foreground         = #ece4f2
+cursor-color       = #e3779e
+cursor-text        = #150d24
+selection-background = #2d2872
+selection-foreground = #ece4f2
+
+# Couleurs ANSI (0-7 normal, 8-15 bright)
+palette = 0=#150d24
+palette = 1=#b35298
+palette = 2=#7e4ca0
+palette = 3=#efaaa2
+palette = 4=#323169
+palette = 5=#b35298
+palette = 6=#4b3a8c
+palette = 7=#c9add1
+palette = 8=#2d2872
+palette = 9=#e3779e
+palette = 10=#c9add1
+palette = 11=#efaaa2
+palette = 12=#4b3a8c
+palette = 13=#e3779e
+palette = 14=#c9add1
+palette = 15=#ece4f2
