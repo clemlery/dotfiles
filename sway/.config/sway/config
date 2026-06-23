@@ -3,6 +3,7 @@
 # Read `man 5 sway` for a complete reference.
 
 ### Loading sub-configs
+include ~/.config/sway/conf.d/theme/theme.conf
 include ~/.config/sway/conf.d/input/input.conf
 include ~/.config/sway/conf.d/keybinds/keybinds.conf
 include ~/.config/sway/conf.d/app_rules/app_rules.conf
