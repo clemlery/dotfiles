@@ -6,7 +6,7 @@
     },
     "on-click": "ghostty -e htop"
   },
-  "memory": {
+  "custom/ram-graph": {
     "format": " {}%",
     "tooltip-format": "Physical: {used:0.1f}/{total:0.1f}GiB used\nSwap: {swapUsed:0.1f}/{swapTotal:0.1f}GiB used",
     "on-click": "ghostty -e htop"
@@ -45,6 +45,11 @@
     "format": " {}",
     "exec": "~/.config/waybar/scripts/fcitx5.sh",
     "interval": 5
+  },
+  "custom/ram-graph": {
+    "exec": "~/.config/waybar/scripts/ram_graph.sh",
+    "interval": 3,
+    "on-click": "ghostty -e htop"
   },
   "group/hardware": {
     "orientation": "horizontal",
