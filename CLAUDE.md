@@ -10,7 +10,7 @@ cohérent, versionné et reproductible, sur le thème d'un coucher de soleil syn
 - **Matériel** : Acer Nitro AN515-58, Intel UHD + RTX 4060 (dual-GPU Optimus)
 - **Session** : Wayland + **sway** (window manager tiling)
 - **Terminal** : ghostty
-- **Lanceur** : wmenu (`wmenu-run`)
+- **Lanceur** : rofi (`rofi -show drun`, thème Crépuscule rose avec icônes Papirus)
 - **Audio** : pactl (PipeWire)
 - **Rétroéclairage** : brightnessctl
 - **Captures** : grim (+ slurp pour la sélection)
@@ -51,6 +51,8 @@ notifications positives) ; `slate`/`mauve` pour le froid.
   Structure attendue : `dotfiles/<appli>/.config/<appli>/...`
 - Ne JAMAIS supprimer un fichier de config original sans avoir vérifié que le
   symlink est en place et fonctionnel.
+- Stow crée des symlinks de **répertoire** (ex : `~/.config/rofi → dotfiles/rofi/.config/rofi`) :
+  un `rm` dans `~/.config/<appli>/` supprime les fichiers du dotfiles lui-même.
 
 ## Règles de sécurité (à respecter strictement)
 

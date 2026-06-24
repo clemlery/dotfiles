@@ -1,6 +1,6 @@
 configuration {
     show-icons:          true;
-    font:                "Inconsolata Nerd Font 12";
+    font:                "MonaspiceNe Nerd Font 12";
     icon-theme:          "Papirus";
     drun-display-format: "{name}";
 }
