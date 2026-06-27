@@ -2,4 +2,5 @@ font-family="MonaspiceNe Nerd Font"
 font-size=12
 theme=crepuscule-rose
 background-opacity=0.85
+background-blur=16
 shell-integration=bash
