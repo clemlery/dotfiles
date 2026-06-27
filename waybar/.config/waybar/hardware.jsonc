@@ -41,16 +41,10 @@
     "exec": "~/.config/waybar/scripts/fcitx5.sh",
     "interval": 5
   },
-  "custom/ram-graph": {
-    "exec": "~/.config/waybar/scripts/ram_graph.sh",
-    "interval": 3,
-    "on-click": "ghostty -e htop"
-  },
   "group/hardware": {
     "orientation": "horizontal",
     "modules": [
       "cpu",
-      "custom/ram-graph",
       "temperature",
       "battery"
     ]

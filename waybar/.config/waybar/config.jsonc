@@ -13,10 +13,10 @@
   ],
   "modules-left": [
     "custom/appmenu",
-    "hyprland/window"
+    "custom/spotify"
   ],
   "modules-center": [
-    "hyprland/workspaces"
+    "sway/workspaces"
   ],
   "modules-right": [
     "group/hardware",

@@ -65,6 +65,38 @@ notifications positives) ; `slate`/`mauve` pour le froid.
 - Pour tester une config sway : proposer la commande, mais me laisser l'exécuter.
 - Tenir compte du dual-GPU Optimus : ne pas supposer de réglages GPU génériques.
 
+## Waybar — modules et organisation
+
+La barre est découpée en 3 fichiers :
+- `config.jsonc` — layout global + positions des modules
+- `modules.jsonc` — config des modules généraux (spotify, appmenu, workspaces, réseau, audio, horloge)
+- `hardware.jsonc` — config des modules hardware (cpu, temp, batterie) regroupés dans `group/hardware`
+
+### Modules actifs
+
+| Position | Module | Rôle |
+|----------|--------|------|
+| Gauche | `custom/appmenu` | Bouton power menu (`power_menu.py`) |
+| Gauche | `sway/window` | Titre de la fenêtre active (avec rewrite pour Firefox, Chrome, Cursor) |
+| Gauche | `custom/spotify` | Lecteur Spotify : cover art (bg-image CSS), titre, artiste, visualizer ASCII ; nécessite `spotify_credentials` |
+| Centre | `sway/workspaces` | Workspaces sway (clic pour activer) |
+| Droite | `group/hardware` | Groupe regroupant CPU + température + batterie |
+| Droite | `network` | Wi-Fi / Ethernet avec tooltip détaillé ; clic → nmtui |
+| Droite | `wireplumber` | Volume audio PipeWire ; clic → alsamixer |
+| Droite | `clock` | Heure + date ; tooltip calendrier avec aujourd'hui en `rose` |
+
+### Module `custom/spotify`
+
+- Script : `scripts/spotify.sh` (Spotify Web API, OAuth refresh token)
+- Credentials : `spotify_credentials` (non versionné — `SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, `SPOTIFY_REFRESH_TOKEN`)
+- Cover art : téléchargée dans `/tmp/waybar_spotify_cover.png` ; affichée via `background-image` CSS ; le script touche `style.css` au changement de pochette pour déclencher `reload_style_on_change`
+- Script d'auth OAuth : `scripts/spotify_auth.sh`
+
+### Rechargement waybar
+
+- `exec_always pkill -x waybar; sleep 0.3; waybar` dans `sway/conf.d/autostart/autostart.conf`
+- Ainsi `swaymsg reload` redémarre automatiquement waybar avec la nouvelle config
+
 ## Workflow attendu
 
 1. Tu proposes une modification ciblée.

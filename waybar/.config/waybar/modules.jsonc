@@ -1,10 +1,18 @@
 {
+  "custom/spotify": {
+    "exec": "~/.config/waybar/scripts/spotify.sh",
+    "return-type": "json",
+    "on-click": "playerctl play-pause",
+    "on-scroll-up": "playerctl next",
+    "on-scroll-down": "playerctl previous",
+    "max-length": 80
+  },
   "custom/appmenu": {
     "format": "",
     "tooltip-format": "Open the power menu",
     "on-click": "$HOME/.config/waybar/scripts/power_menu.py"
   },
-  "hyprland/window": {
+  "sway/window": {
     "rewrite": {
       "(.*) — Mozilla Firefox": "$1",
       "(.*) — Glide Browser": "$1",
@@ -13,7 +21,7 @@
     },
     "separate-outputs": true
   },
-  "hyprland/workspaces": {
+  "sway/workspaces": {
     "on-click": "activate",
     "all-outputs": true,
     "format": "{name}",
@@ -21,23 +29,7 @@
     // "persistent-workspaces": {
     //   "*": 3
     // },
-    "move-to-monitor": true,
-    "window-rewrite": {
-      "class<firefox>": "󰈹 ",
-      "class<google-chrome>": " ",
-      "class<kitty>": " ",
-      "class<org.kde.dolphin>": " ",
-      "class<Thunar>": " ",
-      "class<Cursor>": "󰆧 ",
-      "class<Spotify>": " ",
-      "class<vlc>": "󰕼 ",
-      "class<virt-viewer>": "󰍹 ",
-      "class<1Password>": "󰯅 ",
-      "class<qdbusviewer>": " ",
-      "class<mpv>": " ",
-      "class<qvidcap>": " ",
-      "class<Audacity>": " "
-    }
+    "move-to-monitor": true
   },
   "network": {
     "format": "{ifname}",
