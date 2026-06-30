@@ -2,6 +2,7 @@
   "custom/spotify": {
     "exec": "~/.config/waybar/scripts/spotify.sh",
     "return-type": "json",
+    "format": "\uec1b  {}",
     "on-click": "playerctl play-pause",
     "on-scroll-up": "playerctl next",
     "on-scroll-down": "playerctl previous",

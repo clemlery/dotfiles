@@ -83,10 +83,10 @@ while true; do
     tooltip="$(printf '%s\n%s\n%s' "$track" "$artist" "$album")"
 
     if [[ "$is_playing" == "true" ]]; then
-        text="  ${track_t} — ${artist_t}"
+        text="${track_t} — ${artist_t}"
         class="playing"
     else
-        text="  ${track_t} — ${artist_t}"
+        text="${track_t} — ${artist_t}"
         class="paused"
     fi
 
