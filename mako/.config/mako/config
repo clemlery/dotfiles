@@ -13,9 +13,9 @@ font=MonaspiceNe Nerd Font 11
 # Disposition
 width=320
 height=120
-margin=8
+margin=15
 padding=12
-anchor=top-right
+anchor=top-center
 
 # Comportement
 default-timeout=5000
