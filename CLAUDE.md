@@ -14,6 +14,7 @@ cohérent, versionné et reproductible, sur le thème d'un coucher de soleil syn
 - **Audio** : pactl (PipeWire)
 - **Rétroéclairage** : brightnessctl
 - **Captures** : grim (+ slurp pour la sélection)
+- **Fond d'écran** : swww (daemon) — sélecteur par output via rofi (`$mod+Shift+w`)
 
 ## Conventions sway
 
@@ -96,6 +97,34 @@ La barre est découpée en 3 fichiers :
 
 - `exec_always pkill -x waybar; sleep 0.3; waybar` dans `sway/conf.d/autostart/autostart.conf`
 - Ainsi `swaymsg reload` redémarre automatiquement waybar avec la nouvelle config
+
+## Wallpaper — sélecteur par output (swww)
+
+Fond d'écran géré par **swww** (pas swaybg : la ligne `output * bg …` a été
+retirée de `sway/config` pour ne pas doubler swww sur le layer background).
+
+### Composants
+
+| Élément | Chemin | Rôle |
+|---------|--------|------|
+| Picker | `sway/scripts/wallpaper-picker.sh` | Détecte l'output focus (`swaymsg -t get_outputs` → `.focused`), ouvre rofi avec vignettes de `~/Images/Backgrounds` (protocole icône `\0icon\x1f<chemin>`), applique via `swww img --outputs <name>` sur ce seul écran, puis persiste l'état |
+| Restore | `sway/scripts/wallpaper-restore.sh` | Au démarrage de session : attend le daemon, rejoue l'état par output ; fond par défaut si état vide |
+| Thème rofi | `rofi/wallpaper.rasi` | Grille 4×3 de vignettes, palette Crépuscule rose (focus `rose`) |
+
+### Persistance
+
+- État dans `~/.local/state/sway-wallpaper/state` : une ligne `output<TAB>chemin`
+  par écran (**hors-repo**, non versionné — spécifique à la machine).
+- Le picker remplace la ligne de l'output focus en **préservant celles des autres**.
+
+### Déclenchement & autostart
+
+- Keybind : `bindsym $mod+Shift+w exec ~/.config/sway/scripts/wallpaper-picker.sh`
+- Autostart : `exec swww-daemon` + `exec …/wallpaper-restore.sh` dans
+  `conf.d/autostart/autostart.conf`.
+- ⚠️ Ce sont des `exec` (pas `exec_always`) : ils ne tournent qu'au **démarrage**
+  de sway, pas sur un `reload` (volontaire — ne pas rejouer la restauration à
+  chaque reload). Le picker relance le daemon lui-même s'il est absent.
 
 ## Workflow attendu
 

@@ -1,0 +1,97 @@
+/* Thème « Crépuscule rose » — sélecteur de wallpaper (grille de vignettes) */
+
+* {
+    bg:      #150d24;
+    bg-alt:  #1e1233;
+    surface: #2d2872;
+    muted:   #4b3a8c;
+    rose:    #e3779e;
+    magenta: #b35298;
+    lilac:   #c9add1;
+    fg:      #ece4f2;
+    peach:   #efaaa2;
+
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+window {
+    background-color: @bg;
+    border:           2px solid;
+    border-color:     @muted;
+    border-radius:    12px;
+    width:            72%;
+    padding:          12px;
+}
+
+mainbox {
+    spacing:  10px;
+    children: [ inputbar, listview ];
+}
+
+inputbar {
+    background-color: @surface;
+    border-radius:    8px;
+    padding:          6px 10px;
+    spacing:          8px;
+    children:         [ prompt, entry ];
+}
+
+prompt {
+    text-color: @rose;
+}
+
+entry {
+    text-color:        @fg;
+    placeholder:       "Rechercher un fond…";
+    placeholder-color: @lilac;
+}
+
+/* Grille : 4 colonnes × 3 lignes de vignettes */
+listview {
+    spacing:      10px;
+    scrollbar:    true;
+    fixed-height: false;
+    columns:      4;
+    lines:        3;
+    flow:         horizontal;
+    layout:       vertical;
+}
+
+element {
+    orientation:   vertical;
+    border-radius: 10px;
+    padding:       6px;
+    spacing:       6px;
+    children:      [ element-icon, element-text ];
+}
+
+element normal normal,
+element alternate normal {
+    background-color: @bg-alt;
+    text-color:       @fg;
+}
+
+element selected normal,
+element selected active {
+    background-color: @surface;
+    text-color:       @rose;
+    border:           2px solid;
+    border-color:     @rose;
+}
+
+element-icon {
+    size:           160px;
+    horizontal-align: 0.5;
+}
+
+element-text {
+    horizontal-align: 0.5;
+    vertical-align:   0.5;
+}
+
+scrollbar {
+    handle-color:     @rose;
+    background-color: @bg-alt;
+    handle-width:     6px;
+}

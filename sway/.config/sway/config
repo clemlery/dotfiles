@@ -8,7 +8,6 @@ include ~/.config/sway/conf.d/autostart/autostart.conf
 include ~/.config/sway/conf.d/input/input.conf
 include ~/.config/sway/conf.d/keybinds/keybinds.conf
 include ~/.config/sway/conf.d/app_rules/app_rules.conf
-include ~/.config/sway/conf.d/waybar/bar.conf
 
 ### Variables
 # Logo key. Use Mod1 for Alt.
@@ -24,8 +23,9 @@ set $term ghostty
 set $menu wmenu-run
 
 ### Output configuration
-# Default wallpaper
-output * bg /home/clem/Images/Backgrounds/digital-art-isolated-house.jpg fill
+# Wallpaper géré par swww (voir conf.d/autostart : swww-daemon + wallpaper-restore.sh).
+# Sélecteur par output : $mod+Shift+w → scripts/wallpaper-picker.sh
+# (Ancien fond swaybg retiré pour ne pas doubler swww sur le layer background.)
 
 # Example configuration:
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
@@ -46,3 +46,6 @@ output * bg /home/clem/Images/Backgrounds/digital-art-isolated-house.jpg fill
 ### Status bar handled in conf.d/bar.conf
 
 ### Include system defaults
+
+# For handling dialog boxes properly
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
