@@ -14,8 +14,9 @@ STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/sway-wallpaper"
 STATE="$STATE_DIR/state"
 
 # Transition swww (légère, adaptée au dual-GPU Optimus)
-TRANSITION_TYPE="${WP_TRANSITION_TYPE:-fade}"
+TRANSITION_TYPE="${WP_TRANSITION_TYPE:-outer}"
 TRANSITION_DURATION="${WP_TRANSITION_DURATION:-1}"
+TRANSITION_POS="0.854,0.700"
 
 notify() { command -v notify-send >/dev/null 2>&1 && notify-send "Wallpaper" "$1" || printf '%s\n' "$1" >&2; }
 
@@ -71,6 +72,7 @@ swww img \
     --outputs "$output" \
     --transition-type "$TRANSITION_TYPE" \
     --transition-duration "$TRANSITION_DURATION" \
+    --transition-pos "$TRANSITION_POS" \
     "$path"
 
 # --- Persistance : une ligne "output<TAB>chemin" par écran ---------------
