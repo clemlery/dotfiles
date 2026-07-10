@@ -25,7 +25,7 @@ FONT_DIR="$HOME/.local/share/fonts"
 # Paquets stow à lier (dossiers du repo respectant dotfiles/<app>/.config/<app>/…)
 # NB : kanshi est volontairement exclu — son fichier `kanshi/config` n'est pas
 # dans la structure stow attendue (`kanshi/.config/kanshi/config`).
-STOW_PACKAGES=(cava ghostty git mako rofi sway waybar wofi)
+STOW_PACKAGES=(ascii-animations cava ghostty git mako rofi sway waybar wofi)
 
 # Paquets dnf officiels
 DNF_PACKAGES=(
