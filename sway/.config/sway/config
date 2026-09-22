@@ -23,6 +23,10 @@ set $term ghostty
 set $menu wmenu-run
 
 ### Output configuration
+# Disposition des écrans : fichier généré par nwg-displays ($mod+p).
+# Doit être inclus APRÈS les variables pour que les `output` s'appliquent en dernier.
+include ~/.config/sway/outputs
+
 # Wallpaper géré par swww (voir conf.d/autostart : swww-daemon + wallpaper-restore.sh).
 # Sélecteur par output : $mod+Shift+w → scripts/wallpaper-picker.sh
 # (Ancien fond swaybg retiré pour ne pas doubler swww sur le layer background.)
