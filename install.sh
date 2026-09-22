@@ -23,9 +23,7 @@ NERD_FONTS_VERSION="v3.2.1"
 FONT_DIR="$HOME/.local/share/fonts"
 
 # Paquets stow à lier (dossiers du repo respectant dotfiles/<app>/.config/<app>/…)
-# NB : kanshi est volontairement exclu — son fichier `kanshi/config` n'est pas
-# dans la structure stow attendue (`kanshi/.config/kanshi/config`).
-STOW_PACKAGES=(ascii-animations cava ghostty git mako rofi sway waybar wofi)
+STOW_PACKAGES=(ascii-animations cava ghostty git kanshi mako rofi sway waybar wofi)
 
 # Paquets dnf officiels
 DNF_PACKAGES=(
@@ -39,6 +37,8 @@ DNF_PACKAGES=(
   wireplumber pipewire pipewire-pulseaudio playerctl cava
   # Matériel / système
   brightnessctl lm_sensors upower NetworkManager-tui alsa-utils
+  # Panneaux de réglages ($mod+p écrans, $mod+Shift+b bluetooth)
+  nwg-displays kanshi blueman bluez
   # Images (swaylock blur) & thème d'icônes
   ImageMagick papirus-icon-theme
   # Outils & runtime
@@ -185,9 +185,6 @@ run_stow() {
       err "Conflit stow sur '$pkg' — résous-le puis relance ./install.sh --stow."
     fi
   done
-
-  warn "kanshi non lié : 'kanshi/config' n'est pas dans la structure stow"
-  warn "  (attendu : kanshi/.config/kanshi/config). À corriger avant de le stower."
 }
 
 # ── Notes finales ────────────────────────────────────────────────────────────

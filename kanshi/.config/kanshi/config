@@ -1,0 +1,6 @@
+# Profils d'écrans kanshi — fichier ÉCRIT PAR nwg-displays ($mod+p).
+# Ne pas éditer à la main : le bouton « Apply » du GUI écrase ce fichier.
+#
+# kanshi surveille les branchements à chaud et rejoue le profil correspondant
+# à la combinaison d'écrans détectée. Démarré depuis conf.d/autostart.
+# Sans profil, le daemon ne fait rien : ce fichier est inoffensif tel quel.

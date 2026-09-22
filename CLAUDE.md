@@ -14,6 +14,8 @@ cohérent, versionné et reproductible, sur le thème d'un coucher de soleil syn
 - **Audio** : pactl (PipeWire)
 - **Rétroéclairage** : brightnessctl
 - **Captures** : grim (+ slurp pour la sélection)
+- **Écrans** : nwg-displays (GUI, `$mod+p`) + kanshi (profils à chaud)
+- **Bluetooth** : blueman-manager (`$mod+Shift+b`)
 - **Fond d'écran** : swww (daemon) — sélecteur par output via rofi (`$mod+Shift+w`)
 
 ## Conventions sway
@@ -125,6 +127,31 @@ retirée de `sway/config` pour ne pas doubler swww sur le layer background).
 - ⚠️ Ce sont des `exec` (pas `exec_always`) : ils ne tournent qu'au **démarrage**
   de sway, pas sur un `reload` (volontaire — ne pas rejouer la restauration à
   chaque reload). Le picker relance le daemon lui-même s'il est absent.
+
+## Écrans & Bluetooth — panneaux de réglages
+
+Lanceur commun : `sway/scripts/settings-panel.sh <displays|bluetooth>` — vérifie
+la présence du binaire (et du service `bluetooth`) et prévient via mako au lieu
+d'échouer en silence.
+
+| Raccourci | Outil | Paquet |
+|-----------|-------|--------|
+| `$mod+p` | `nwg-displays` | `nwg-displays` |
+| `$mod+Shift+b` | `blueman-manager` | `blueman` |
+
+### Disposition des écrans (fichiers générés)
+
+nwg-displays écrit **deux fichiers versionnés** qu'il ne faut JAMAIS éditer à la
+main (« Apply » les écrase) :
+
+- `sway/.config/sway/outputs` — `include` depuis `sway/config`, appliqué au
+  démarrage et à chaque `reload`.
+- `kanshi/.config/kanshi/config` — rejoué à chaud par le daemon `kanshi`
+  (`exec kanshi` dans `conf.d/autostart`) au branchement/débranchement.
+
+Les deux décrivent la même disposition, ils ne se contredisent donc pas.
+`kanshi` est désormais **stowé normalement** (`kanshi/.config/kanshi/config`) et
+présent dans `STOW_PACKAGES` de `install.sh`.
 
 ## Workflow attendu
 

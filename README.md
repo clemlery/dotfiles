@@ -57,18 +57,20 @@ dotfiles/
 ├── CLAUDE.md                  # instructions projet (conventions, palette, règles)
 │
 ├── sway/.config/sway/         # window manager
-│   ├── config                 # point d'entrée (include des conf.d/*)
+│   ├── config                 # point d'entrée (include des conf.d/* et outputs)
+│   ├── outputs                # disposition des écrans — GÉNÉRÉ par nwg-displays
 │   ├── lock.sh                # verrouillage : screenshot flouté + swaylock thémé
 │   ├── waybar.sh
 │   ├── conf.d/
 │   │   ├── theme/theme.conf       # palette + bordures fenêtres + gaps + police
-│   │   ├── autostart/autostart.conf  # mako, waybar, swww-daemon, restore wallpaper
+│   │   ├── autostart/autostart.conf  # mako, waybar, swww-daemon, restore wallpaper, kanshi
 │   │   ├── input/input.conf       # clavier (layout fr)
 │   │   ├── keybinds/keybinds.conf # TOUS les raccourcis (voir plus bas)
 │   │   └── app_rules/app_rules.conf  # règles for_window (floating, fullscreen…)
 │   └── scripts/
 │       ├── wallpaper-picker.sh    # sélecteur de fond par écran (rofi + swww)
-│       └── wallpaper-restore.sh   # rejoue les fonds au démarrage de session
+│       ├── wallpaper-restore.sh   # rejoue les fonds au démarrage de session
+│       └── settings-panel.sh      # ouvre nwg-displays / blueman-manager
 │
 ├── waybar/.config/waybar/     # barre de statut
 │   ├── config.jsonc           # layout global + positions des modules
@@ -94,11 +96,12 @@ dotfiles/
 ├── mako/.config/mako/         # notifications
 ├── wofi/.config/wofi/         # lanceur alternatif
 ├── git/.config/git/           # config git globale
-└── kanshi/config              # profils d'écrans (hors structure stow, cf. install.sh)
+└── kanshi/.config/kanshi/
+    └── config                 # profils d'écrans à chaud — GÉNÉRÉ par nwg-displays
 ```
 
-> `kanshi` est volontairement **exclu de stow** : son fichier n'est pas dans
-> l'arborescence `kanshi/.config/kanshi/…` attendue.
+> Les fichiers `sway/outputs` et `kanshi/config` sont **écrits par nwg-displays**
+> (`$mod+p`) : ne pas les éditer à la main, le bouton « Apply » les écrase.
 
 ### Hors-repo (non versionné)
 
@@ -141,6 +144,18 @@ Modificateur `$mod` = **Super** (Mod4). Navigation façon Vim :
 | `$mod + Ctrl + l` | Verrouiller l'écran (screenshot flouté + swaylock) |
 | `$mod + Shift + r` | Recharger sway |
 | `$mod + Shift + e` | Quitter sway (confirmation swaynag) |
+
+### Réglages système
+
+| Raccourci | Action |
+|-----------|--------|
+| `$mod + p` | **Écrans** : placement / résolution / échelle (nwg-displays) |
+| `$mod + Shift + b` | **Bluetooth** : appairage & connexion (blueman-manager) |
+
+Les deux passent par `sway/scripts/settings-panel.sh`, qui affiche une
+notification mako si l'outil n'est pas installé (ou si le service `bluetooth`
+est arrêté) plutôt que d'échouer en silence. Les fenêtres s'ouvrent flottantes
+et centrées (`conf.d/app_rules`).
 
 ### Focus (navigation entre fenêtres)
 
@@ -211,6 +226,26 @@ En **mode resize** : `h/j/k/l` ou les flèches redimensionnent par pas de 10px ;
 ---
 
 ## Composants notables
+
+### Écrans — nwg-displays + kanshi
+
+`$mod+p` ouvre **nwg-displays** : on y glisse les écrans à la souris et on règle
+résolution, rafraîchissement, échelle et rotation. « Apply » écrit **deux**
+fichiers, tous deux versionnés dans le repo :
+
+| Fichier | Lu par | Quand |
+|---------|--------|-------|
+| `sway/.config/sway/outputs` | sway (`include` depuis `config`) | démarrage de session et `swaymsg reload` |
+| `kanshi/.config/kanshi/config` | daemon `kanshi` (`exec` dans autostart) | branchement / débranchement à chaud |
+
+Les deux décrivent la même disposition : sway la pose au démarrage, kanshi la
+rejoue quand la combinaison d'écrans change. Un `kanshi/config` sans profil est
+inoffensif — le daemon ne fait rien.
+
+### Bluetooth — blueman
+
+`$mod+Shift+b` ouvre `blueman-manager` (appairage, confiance, profils audio).
+Il dépend du service système : `sudo systemctl enable --now bluetooth`.
 
 ### Fond d'écran — sélecteur par écran (swww)
 
