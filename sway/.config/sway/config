@@ -52,4 +52,13 @@ include ~/.config/sway/outputs
 ### Include system defaults
 
 # For handling dialog boxes properly
-exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+# XDG_CURRENT_DESKTOP est forcé explicitement car GDM ne le propage pas
+# correctement pour la session sway : sans lui, xdg-desktop-portal ne
+# charge pas sway-portals.conf, le backend "wlr" n'est jamais choisi pour
+# ScreenCast/Screenshot, et Discord/OBS ne peuvent plus lister d'écran.
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway:wlroots
+
+# Démarre sway-session.target -> active graphical-session.target, dont dépendent
+# xdg-desktop-portal(-wlr) : sans ça, le portail PipeWire ne démarre jamais et le
+# partage d'écran (Discord, OBS) est cassé.
+exec systemctl --user start sway-session.target
