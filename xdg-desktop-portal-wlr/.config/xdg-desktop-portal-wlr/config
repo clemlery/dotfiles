@@ -1,0 +1,6 @@
+# Sélecteur de partage d'écran (Discord, navigateurs…) via le portail wlr.
+# Par défaut c'est slurp (clic sur un écran, sans fenêtre visible) :
+# on le remplace par un menu rofi au thème Crépuscule rose.
+[screencast]
+chooser_type=dmenu
+chooser_cmd=rofi -dmenu -i -p "Partager" -theme ~/.config/rofi/screenshare.rasi

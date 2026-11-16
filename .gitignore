@@ -26,3 +26,4 @@ monitors.xml
 # Fichiers système
 .DS_Store
 Thumbs.db
+sway/.config/sway/outputs

@@ -23,7 +23,7 @@ NERD_FONTS_VERSION="v3.2.1"
 FONT_DIR="$HOME/.local/share/fonts"
 
 # Paquets stow à lier (dossiers du repo respectant dotfiles/<app>/.config/<app>/…)
-STOW_PACKAGES=(ascii-animations cava ghostty git kanshi mako rofi sway waybar wofi)
+STOW_PACKAGES=(ascii-animations cava ghostty git kanshi mako rofi sway waybar wofi xdg-desktop-portal-wlr)
 
 # Paquets dnf officiels
 DNF_PACKAGES=(

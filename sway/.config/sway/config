@@ -51,6 +51,11 @@ include ~/.config/sway/outputs
 
 ### Include system defaults
 
+# sway-systemd : exporte l'env (XDG_CURRENT_DESKTOP=sway…) et démarre
+# sway-session.target → graphical-session.target, requis par xdg-desktop-portal
+# (partage d'écran Discord/navigateurs, captures via portail).
+include /etc/sway/config.d/*
+
 # For handling dialog boxes properly
 # XDG_CURRENT_DESKTOP est forcé explicitement car GDM ne le propage pas
 # correctement pour la session sway : sans lui, xdg-desktop-portal ne

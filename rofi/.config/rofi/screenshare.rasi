@@ -1,0 +1,13 @@
+/* Sélecteur de partage d'écran (xdg-desktop-portal-wlr) — overrides du thème Crépuscule rose */
+
+@import "theme.rasi"
+
+window {
+    location:  center;
+    anchor:    center;
+    width:     420px;
+}
+
+listview {
+    lines:     6;
+}
